@@ -8,10 +8,10 @@ This solver can be used with [desec.io](https://desec.io) DNS API. The documenta
 of the API can be found [here](https://desec.readthedocs.io/en/latest/)
 
 ## Requirements
-- [go](https://golang.org) => 1.19.0
+- [go](https://golang.org) => 1.22.0
 - [helm](https://helm.sh/) >= v3.0.0
 - [kuberentes](https://kubernetes.io/) => 1.25.0
-- [cert-manager](https://cert-managaer.io/) => 1.11.0
+- [cert-manager](https://cert-managaer.io/) => 1.15.1
 
 ## Installation
 
@@ -38,6 +38,9 @@ data:
   token: your-key-base64-encoded
 ```
 
+We can also then provide a standardised 'testing framework', or set of
+conformance tests, which allow us to validate that a DNS provider works as
+expected.
 Create a 'ClusterIssuer' or 'Issuer' resource as the following:
 
 ```yaml
