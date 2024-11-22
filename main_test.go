@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/cert-manager/cert-manager/test/acme/dns"
 	"os"
 	"testing"
 

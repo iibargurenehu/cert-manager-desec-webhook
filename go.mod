@@ -4,10 +4,12 @@ go 1.22.0
 
 require (
 	github.com/cert-manager/cert-manager v1.15.1
+	github.com/cert-manager/webhook-example v0.0.0-20240809063448-0dcb65374050
 	github.com/miekg/dns v1.1.61
 	github.com/nrdcg/desec v0.8.0
 	github.com/stretchr/testify v1.9.0
 	k8s.io/apiextensions-apiserver v0.30.2
+	k8s.io/apimachinery v0.30.2
 	k8s.io/client-go v0.30.2
 	k8s.io/klog/v2 v2.120.1
 )
@@ -98,7 +100,6 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/api v0.30.2 // indirect
-	k8s.io/apimachinery v0.30.2 // indirect
 	k8s.io/apiserver v0.30.2 // indirect
 	k8s.io/component-base v0.30.2 // indirect
 	k8s.io/kms v0.30.2 // indirect
