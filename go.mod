@@ -3,7 +3,7 @@ module github.com/su541/cert-manager-desec-webhook
 go 1.22.0
 
 require (
-	github.com/cert-manager/cert-manager v1.15.1
+	github.com/cert-manager/cert-manager v1.15.4
 	github.com/cert-manager/webhook-example v0.0.0-20240809063448-0dcb65374050
 	github.com/miekg/dns v1.1.61
 	github.com/nrdcg/desec v0.8.0
