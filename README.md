@@ -38,6 +38,10 @@ data:
   token: your-key-base64-encoded
 ```
 
+```shell
+kubectl create secret generic desec-io-token --from-literal "token=<your token base64 encoded>" --namespace cert-manager
+```
+
 We can also then provide a standardised 'testing framework', or set of
 conformance tests, which allow us to validate that a DNS provider works as
 expected.
@@ -63,7 +67,7 @@ spec:
               apiKeySecretRef:
                 key: token
                 name: desec-io-secret
-            groupName: acme.example.com
+            groupName: de.su541.acme
             solverName: desec
 ```
 
