@@ -31,7 +31,7 @@ Create a secret containing the credentials
 apiVersion: v1
 kind: Secret
 metadata:
-  name: desec-io-secret
+  name: desec-io-token
   namespace: cert-manager
 type: Opaque
 data:
@@ -39,7 +39,7 @@ data:
 ```
 
 ```shell
-kubectl create secret generic desec-io-token --from-literal "token=<your token base64 encoded>" --namespace cert-manager
+kubectl create secret generic desec-io-token --from-literal "token=<your token>" --namespace cert-manager
 ```
 
 We can also then provide a standardised 'testing framework', or set of
@@ -66,7 +66,7 @@ spec:
             config:
               apiKeySecretRef:
                 key: token
-                name: desec-io-secret
+                name: desec-io-token
             groupName: de.su541.acme
             solverName: desec
 ```

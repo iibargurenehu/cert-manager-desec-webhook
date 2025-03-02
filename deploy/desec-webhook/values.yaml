@@ -13,7 +13,7 @@ image:
   pullPolicy: IfNotPresent
 
 secretName:
-  - desec-token
+  - desec-io-token
 
 service:
   port: 443
