@@ -1,23 +1,23 @@
-groupName: acme.yourdomain.tld
-
+affinity: {}
 certManager:
   namespace: cert-manager
   serviceAccountName: cert-manager
 
+nameOverride: ""
+fullnameOverride: ""
+
+groupName: de.su541.acme
 image:
-  repository: "su541/cert-manager-desec-webhook"
+  repository: "ghcr.io/su541/cert-manager-desec-webhook"
   tag: latest
   pullPolicy: IfNotPresent
 
 secretName:
-  - desec-token-secret
-
-nameOverride: ""
-fullnameOverride: ""
+  - desec-token
 
 service:
-  type: ClusterIP
   port: 443
+  type: ClusterIP
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -34,5 +34,3 @@ resources: {}
 nodeSelector: {}
 
 tolerations: []
-
-affinity: {}
