@@ -17,7 +17,7 @@ of the API can be found [here](https://desec.readthedocs.io/en/latest/)
 
 ### Using helm from local checkout
 ```bash
-helm install desec-webhook -n cert-manager deploy
+helm install desec-webhook -n cert-manager deploy/desec-webhook
 ```
 ### Using public helm chart
 
