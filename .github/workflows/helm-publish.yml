@@ -1,0 +1,52 @@
+name: Publish Helm chart to GHCR (OCI)
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ "v*" ]  # opcional: publica al crear tags
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  # Usa tu organizacion o usuario. Por defecto, el owner del repo.
+  OWNER: ${{ github.repository_owner }}
+  # Carpeta donde esta tu Chart.yaml
+  CHART_DIR: ./chart
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4  # o deja vacio para latest estable
+
+      - name: Helm version
+        run: helm version
+
+      - name: Login to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login $REGISTRY -u ${{ github.actor }} --password-stdin
+
+      - name: Package chart
+        working-directory: ${{ env.CHART_DIR }}
+        run: |
+          mkdir -p ../../dist
+          helm lint .
+          helm package . --destination ../../dist
+      - name: Push chart to GHCR as OCI
+        run: |
+          ls -l dist
+          # Extrae nombre del chart desde el .tgz generado
+          TGZ=$(ls dist/*.tgz)
+          echo "Artifact: $TGZ"
+          # Namespace del repo de charts en GHCR. Cambialo si quieres otro nombre.
+          CHART_NS="oci://$REGISTRY/$OWNER/helm-charts"
+          helm push "$TGZ" "$CHART_NS"
